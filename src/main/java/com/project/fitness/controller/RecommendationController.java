@@ -4,6 +4,7 @@ package com.project.fitness.controller;
 import com.project.fitness.dto.RecommendationRequest;
 import com.project.fitness.dto.RecommendationResponse;
 import com.project.fitness.service.RecommendationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class RecommendationController {
     private final RecommendationService recommendationService;
 
     @PostMapping("/generate")
-    public ResponseEntity<RecommendationResponse> generateRecommendation(@RequestBody RecommendationRequest request){
+    public ResponseEntity<RecommendationResponse> generateRecommendation(@Valid @RequestBody RecommendationRequest request){
         RecommendationResponse response = recommendationService.generateRecommendation(request);
         return ResponseEntity.ok(response);
     }
