@@ -2,7 +2,7 @@
 
 FitTrack is a Spring Boot backend application that enables users to track fitness activities, manage workout data, and receive personalized fitness recommendations.
 
-Built using industry-standard backend development practices, the project demonstrates REST API design, layered architecture, database relationships, DTO-based communication, and PostgreSQL integration.
+Built using industry-standard backend development practices, the project demonstrates REST API design, layered architecture, DTO-based communication, validation, exception handling, database relationships, and PostgreSQL integration.
 
 ---
 
@@ -12,38 +12,41 @@ Built using industry-standard backend development practices, the project demonst
 
 ✅ User Management Module
 
-- User registration
-- UUID-based user identification
-- Profile information management
+* User registration
+* UUID-based user identification
+* Profile information management
 
 ✅ Activity Tracking Module
 
-- Track fitness activities
-- Record workout duration
-- Record calories burned
-- Store activity-specific metrics using PostgreSQL JSONB
+* Track fitness activities
+* Record workout duration
+* Record calories burned
+* Store activity-specific metrics using PostgreSQL JSONB
 
 ✅ Recommendation Module
 
-- Generate personalized fitness recommendations
-- Store improvement suggestions
-- Store workout guidance
-- Store safety recommendations
-- Retrieve recommendations by user or activity
+* Generate personalized fitness recommendations
+* Store improvement suggestions
+* Store workout guidance
+* Store safety recommendations
+* Retrieve recommendations by user or activity
 
 ---
 
 ## 🛠 Technical Highlights
 
-- Spring Boot REST APIs
-- Layered Architecture (Controller → Service → Repository)
-- DTO Pattern (Request / Response Separation)
-- PostgreSQL Database Integration
-- Hibernate / Spring Data JPA
-- Entity Relationships (One-to-Many & Many-to-One)
-- JSONB Storage for Flexible Data
-- Maven Build Management
-- Lombok for Boilerplate Reduction
+* Spring Boot REST APIs
+* Layered Architecture (Controller → Service → Repository)
+* DTO Pattern (Request / Response Separation)
+* PostgreSQL Database Integration
+* Hibernate / Spring Data JPA
+* Entity Relationships (One-to-Many & Many-to-One)
+* JSONB Storage for Flexible Data
+* Bean Validation
+* Global Exception Handling
+* OpenAPI / Swagger Documentation
+* Maven Build Management
+* Lombok for Boilerplate Reduction
 
 ---
 
@@ -63,11 +66,11 @@ PostgreSQL Database
 
 The project follows a layered architecture to ensure:
 
-- Separation of concerns
-- Maintainable codebase
-- Scalability
-- Easier testing and debugging
-- Industry-standard backend design
+* Separation of concerns
+* Maintainable codebase
+* Scalability
+* Easier testing and debugging
+* Industry-standard backend design
 
 ---
 
@@ -91,15 +94,15 @@ Track user fitness activities.
 
 **Supported Activity Types**
 
-- RUNNING
-- WALKING
-- CYCLING
-- SWIMMING
-- WEIGHT_TRAINING
-- YOGA
-- CARDIO
-- STRETCHING
-- OTHER
+* RUNNING
+* WALKING
+* CYCLING
+* SWIMMING
+* WEIGHT_TRAINING
+* YOGA
+* CARDIO
+* STRETCHING
+* OTHER
 
 **Endpoints**
 
@@ -111,7 +114,7 @@ POST /api/activities
 GET /api/activities
 ```
 
-Header:
+**Header**
 
 ```text
 X-User-ID: {userId}
@@ -139,6 +142,43 @@ GET /api/recommendation/activity/{activityId}
 
 ---
 
+## ✅ Validation & Error Handling
+
+The application uses Bean Validation to validate incoming API requests before processing.
+
+### Validation Features
+
+* Mandatory field validation
+* Request payload validation using `@Valid`
+* Input constraint validation
+* Consistent API request validation
+
+### Global Exception Handling
+
+A centralized exception handling mechanism provides consistent API responses for:
+
+* Validation failures
+* Resource not found exceptions
+* Invalid requests
+* Unexpected server errors
+
+This improves API reliability and client-side error handling.
+
+---
+
+## 📚 API Documentation
+
+Swagger/OpenAPI documentation is integrated to provide interactive API exploration and testing.
+
+Features include:
+
+* Endpoint documentation
+* Request/Response models
+* Validation details
+* Interactive API testing
+
+---
+
 ## 🗄 Database Design
 
 ```text
@@ -155,20 +195,24 @@ Activity (1) ------> (N) Recommendation
 
 ### Backend
 
-- Java
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- Lombok
+* Java
+* Spring Boot
+* Spring Data JPA
+* Hibernate
+* Lombok
 
 ### Database
 
-- PostgreSQL
-- JSONB Support
+* PostgreSQL
+* JSONB Support
+
+### API Documentation
+
+* Swagger / OpenAPI
 
 ### Build Tool
 
-- Maven
+* Maven
 
 ---
 
@@ -176,25 +220,28 @@ Activity (1) ------> (N) Recommendation
 
 ### Completed
 
-- User Registration Module
-- Activity Tracking Module
-- Recommendation Module
-- DTO Mapping
-- Service Layer
-- Repository Layer
-- PostgreSQL Integration
-- JSONB Storage
-- Entity Relationships
+* User Registration Module
+* Activity Tracking Module
+* Recommendation Module
+* DTO Mapping
+* Service Layer
+* Repository Layer
+* PostgreSQL Integration
+* JSONB Storage
+* Entity Relationships
+* Bean Validation
+* Global Exception Handling
+* Swagger/OpenAPI Documentation
 
 ### Planned Enhancements
 
-- Request Validation
-- Global Exception Handling
-- JWT Authentication
-- Swagger/OpenAPI Documentation
-- AI-Based Recommendation Generation
-- Unit Testing
-- Docker Support
+* JWT Authentication
+* Role-Based Authorization
+* AI-Based Recommendation Generation
+* Unit Testing
+* Integration Testing
+* Docker Support
+* CI/CD Pipeline
 
 ---
 
@@ -202,19 +249,22 @@ Activity (1) ------> (N) Recommendation
 
 This project helped me gain hands-on experience with:
 
-- Spring Boot Application Development
-- REST API Design
-- DTO Pattern
-- JPA/Hibernate Relationships
-- PostgreSQL Integration
-- JSONB Mapping
-- Layered Architecture
-- Backend Development Best Practices
+* Spring Boot Application Development
+* REST API Design
+* DTO Pattern
+* Bean Validation
+* Exception Handling
+* OpenAPI / Swagger
+* JPA/Hibernate Relationships
+* PostgreSQL Integration
+* JSONB Mapping
+* Layered Architecture
+* Backend Development Best Practices
 
 ---
 
 ## 👨‍💻 Author
 
-**Nayan**
+**Nayan Survase**
 
 GitHub: https://github.com/nayan-devs
