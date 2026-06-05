@@ -3,6 +3,7 @@ package com.project.fitness.service;
 
 import com.project.fitness.dto.ActivityRequest;
 import com.project.fitness.dto.ActivityResponse;
+import com.project.fitness.exception.ResourceNotFoundException;
 import com.project.fitness.model.Activity;
 import com.project.fitness.model.User;
 import com.project.fitness.repository.ActivityRepository;
@@ -23,7 +24,7 @@ public class ActivityService {
     public ActivityResponse trackActivity(ActivityRequest request){
 
         User user = userRepository.findById(request.getUserId())
-                .orElseThrow(() -> new RuntimeException("Invalid User: " + request.getUserId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Invalid User: " + request.getUserId()));
 
 
         Activity activity = Activity.builder()

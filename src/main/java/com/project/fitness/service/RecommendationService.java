@@ -2,6 +2,7 @@ package com.project.fitness.service;
 
 import com.project.fitness.dto.RecommendationRequest;
 import com.project.fitness.dto.RecommendationResponse;
+import com.project.fitness.exception.ResourceNotFoundException;
 import com.project.fitness.model.Activity;
 import com.project.fitness.model.Recommendation;
 import com.project.fitness.model.User;
@@ -24,10 +25,10 @@ public class RecommendationService {
 
     public RecommendationResponse generateRecommendation(RecommendationRequest request){
         User user = userRepository.findById(request.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found: " + request.getUserId()));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found: " + request.getUserId()));
 
         Activity activity = activityRepository.findById(request.getActivityId())
-                .orElseThrow(() -> new RuntimeException("Activity not found: " + request.getActivityId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Activity not found: " + request.getActivityId()));
 
 
         Recommendation recommendation = Recommendation.builder()
